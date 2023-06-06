@@ -1,12 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, View, Text } from 'react-native';
+import { useState } from 'react';
+import ClassComponent from './class-component';
 
 export default function App() {
+
+  const [contador, setContador] = useState(0);
+
+  function increment (){
+    setContador(contador + 1);
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <View style={styles.container} >
+      <ClassComponent/>
+      <Text>{contador}</Text>
+      <Button title='Clique' onPress={()=> {increment();}}></Button>
+    
+  </View>
   );
 }
 
@@ -16,5 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
 });
